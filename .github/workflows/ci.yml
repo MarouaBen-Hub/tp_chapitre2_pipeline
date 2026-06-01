@@ -23,6 +23,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Create dummy data for CI validation
+        run: |
+          mkdir -p data
+          touch data/ventes.csv
+
       - name: Syntax check
         run: |
           python -m py_compile pipeline/ingest.py pipeline/validate.py pipeline/orchestrate.py
